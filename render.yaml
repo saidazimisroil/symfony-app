@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: symfony-app
+    plan: free
+    runtime: docker
+    dockerfilePath: Dockerfile
+    buildCommand: "composer install"
+    startCommand: "php-fpm"
+    preDeployCommand: "php bin/console doctrine:migrations:migrate --no-interaction"
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: DATABASE_URL
+        value: "mysql://admin:mysql8@mysql-hostname:3306/symfony"

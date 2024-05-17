@@ -29,7 +29,7 @@ COPY . /var/www/html
 # Copy existing application directory permissions
 COPY --chown=www-data:www-data . /var/www/html
 
-# Change current user to www
+# Change current user to www-data
 USER www-data
 
 # Expose port 9000 and start php-fpm server
